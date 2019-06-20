@@ -1,5 +1,18 @@
+/* eslint-env node */
 'use strict';
+const EngineAddon = require('ember-engines/lib/engine-addon'); // eslint-disable-line node/no-unpublished-require
 
-module.exports = {
-  name: require('./package').name
+const hash = {
+  name: require('./package').name,
+
+  isDevelopingAddon: function () {
+    return true;
+  },
+
+  lazyLoading: {
+    enabled: true // if we make this true it will not build!
+  }
+
 };
+
+module.exports = EngineAddon.extend(hash);
